@@ -1,0 +1,24 @@
+{
+  "name": "alpha-landing-meraj",
+  "version": "1.0.0",
+  "description": "Alpha Traders Qualification Landing Page",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node test_phase2.js"
+  },
+  "keywords": [
+    "alpha-traders",
+    "landing-page"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@neondatabase/serverless": "^1.2.0",
+    "dotenv": "^18.0.6"
+  },
+  "devDependencies": {
+    "pg-mem": "^3.0.14"
+  }
+}

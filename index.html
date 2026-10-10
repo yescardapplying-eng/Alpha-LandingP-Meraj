@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Alpha Traders — Trader Qualification</title>
+  <meta name="description" content="Alpha Traders official qualification assessment for active traders. Align your risk and execution strategy with our desk.">
+  <meta name="robots" content="noindex, nofollow">
+  
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Minimal Brand Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">
+          <span>α</span>
+        </div>
+        <div class="brand-info">
+          <span class="brand-title">ALPHA TRADERS</span>
+          <span class="brand-tagline">Trader Assessment Desk</span>
+        </div>
+      </div>
+      <div class="header-badge">
+        <span class="header-badge-dot" aria-hidden="true"></span>
+        <span>Verified Desk</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Assessment Wrapper (Form-First Layout) -->
+  <main class="main-wrapper">
+    <div class="assessment-container">
+      <div class="assessment-card" id="assessmentCard">
+        
+        <!-- Progress Header -->
+        <div class="card-header" id="cardHeader">
+          <div class="progress-meta">
+            <span class="step-label" id="stepLabel">Step 1 of 5</span>
+            <span class="step-counter" id="stepCounter">20% Completed</span>
+          </div>
+          <div class="progress-track" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+
+        <!-- Form Steps Body -->
+        <div class="card-body" id="cardBody">
+          
+          <!-- ==============================================================
+               STEP 1: Challenge
+               ============================================================== -->
+          <section class="step-pane active" id="stepPane1" aria-labelledby="stepTitle1">
+            <h1 class="step-title" id="stepTitle1">What’s your biggest challenge right now?</h1>
+            
+            <div class="step-error-banner" id="stepBannerError1" role="alert"></div>
+
+            <div class="options-list" role="radiogroup" aria-labelledby="stepTitle1">
+              <label class="option-card" data-group="challenge" data-value="Frequent stop-loss hits" tabindex="0">
+                <input type="radio" name="challenge" value="Frequent stop-loss hits">
+                <div class="option-indicator" aria-hidden="true"></div>
+                <span class="option-text">Frequent stop-loss hits</span>
+              </label>
+
+              <label class="option-card" data-group="challenge" data-value="Wrong position sizing" tabindex="0">
+                <input type="radio" name="challenge" value="Wrong position sizing">
+                <div class="option-indicator" aria-hidden="true"></div>
+                <span class="option-text">Wrong position sizing</span>
+              </label>
+
+              <label class="option-card" data-group="challenge" data-value="No proper exit plan" tabindex="0">
+                <input type="radio" name="challenge" value="No proper exit plan">
+                <div class="option-indicator" aria-hidden="true"></div>
+                <span class="option-text">No proper exit plan</span>
+              </label>
+
+              <label class="option-card" data-group="challenge" data-value="Emotional decision-making" tabindex="0">
+                <input type="radio" name="challenge" value="Emotional decision-making">
+                <div class="option-indicator" aria-hidden="true"></div>
+                <span class="option-text">Emotional decision-making</span>
+              </label>
+            </div>
+          </section>
+
+          <!-- ==============================================================
+               STEP 2: Contact Details (No email, no OTP, no WhatsApp here)
+               ============================================================== -->
+          <section class="step-pane" id="stepPane2" aria-labelledby="stepTitle2">
+            <h2 class="step-title" id="stepTitle2">Your Contact Details</h2>
+            
+            <div class="step-error-banner" id="stepBannerError2" role="alert"></div>
+
+            <!-- Exact supporting text (approx 9-10px) -->
+            <p class="subtle-notice">Our team needs these details to contact you.</p>
+
+            <div class="form-group" id="groupFullName">
+              <label class="form-label" for="fullName">
+                Full Name <span class="required-star">*</span>
+              </label>
+              <div class="input-container">
+                <input 
+                  type="text" 
+                  id="fullName" 
+                  name="fullName" 
+                  class="form-input" 
+                  placeholder="e.g. Rahul Sharma" 
+                  autocomplete="name"
+                  maxlength="60"
+                  required
+                >
+              </div>
+              <div class="field-error-msg" id="errorFullName"></div>
+            </div>
+
+            <div class="form-group" id="groupMobileNumber">
+              <label class="form-label" for="mobileNumber">
+                Mobile Number <span class="required-star">*</span>
+              </label>
+              <div class="input-container">
+                <div class="input-prefix" aria-hidden="true">
+                  <span class="flag-icon">🇮🇳</span>
+                  <span>+91</span>
+                </div>
+                <input 
+                  type="tel" 
+                  id="mobileNumber" 
+                  name="mobileNumber" 
+                  class="form-input has-prefix" 
+                  placeholder="10-digit mobile number" 
+                  autocomplete="tel-national"
+                  maxlength="14"
+                  inputmode="numeric"
+                  required
+                >
+              </div>
+              <p class="field-helper">Enter 10-digit primary contact number</p>
+              <div class="field-error-msg" id="errorMobileNumber"></div>
+            </div>
+          </section>
+
+          <!-- ==============================================================
+               STEP 3: Trading Segment
+               ============================================================== -->
+          <section class="step-pane" id="stepPane3" aria-labelledby="stepTitle3">
+            <h2 class="step-title" id="stepTitle3">Which segment do you trade in?</h2>
+            
+            <div class="step-error-banner" id="stepBannerError3" role="alert"></div>
+
+            <div class="options-list" role="radiogroup" aria-labelledby="stepTitle3">
+              <label class="option-card" data-group="tradingSegment" data-value="Equity" tabindex="0">
+                <input type="radio" name="tradingSegment" value="Equity">
+                <div class="option-indicator" aria-hidden="true"></div>
+                <span class="option-text">Equity</span>
+              </label>
+
+              <label class="option-card" data-group="tradingSegment" data-value="Options" tabindex="0">
+                <input type="radio" name="tradingSegment" value="Options">
+                <div class="option-indicator" aria-hidden="true"></div>
+                <span class="option-text">Options</span>
+              </label>
+
+              <label class="option-card" data-group="tradingSegment" data-value="Futures" tabindex="0">
+                <input type="radio" name="tradingSegment" value="Futures">
+                <div class="option-indicator" aria-hidden="true"></div>
+                <span class="option-text">Futures</span>
+              </label>
+
+              <label class="option-card" data-group="tradingSegment" data-value="Commodity" tabindex="0">
+                <input type="radio" name="tradingSegment" value="Commodity">
+                <div class="option-indicator" aria-hidden="true"></div>
+                <span class="option-text">Commodity</span>
+              </label>
+            </div>
+          </section>
+
+          <!-- ==============================================================
+               STEP 4: Trading Capital
+               ============================================================== -->
+          <section class="step-pane" id="stepPane4" aria-labelledby="stepTitle4">
+            <h2 class="step-title" id="stepTitle4">Trading capital?</h2>
+            
+            <div class="step-error-banner" id="stepBannerError4" role="alert"></div>
+
+            <div class="options-list" role="radiogroup" aria-labelledby="stepTitle4">
+              <label class="option-card" data-group="tradingCapital" data-value="Below 50K" tabindex="0">
+                <input type="radio" name="tradingCapital" value="Below 50K">
+                <div class="option-indicator" aria-hidden="true"></div>
+                <span class="option-text">Below 50K</span>
+              </label>
+
+              <label class="option-card" data-group="tradingCapital" data-value="50K–1 Lakh" tabindex="0">
+                <input type="radio" name="tradingCapital" value="50K–1 Lakh">
+                <div class="option-indicator" aria-hidden="true"></div>
+                <span class="option-text">50K–1 Lakh</span>
+              </label>
+
+              <label class="option-card" data-group="tradingCapital" data-value="1 Lakh–2 Lakh" tabindex="0">
+                <input type="radio" name="tradingCapital" value="1 Lakh–2 Lakh">
+                <div class="option-indicator" aria-hidden="true"></div>
+                <span class="option-text">1 Lakh–2 Lakh</span>
+              </label>
+
+              <label class="option-card" data-group="tradingCapital" data-value="2 Lakh+" tabindex="0">
+                <input type="radio" name="tradingCapital" value="2 Lakh+">
+                <div class="option-indicator" aria-hidden="true"></div>
+                <span class="option-text">2 Lakh+</span>
+              </label>
+            </div>
+          </section>
+
+          <!-- ==============================================================
+               STEP 5: Final Details (WhatsApp Number & State)
+               ============================================================== -->
+          <section class="step-pane" id="stepPane5" aria-labelledby="stepTitle5">
+            <h2 class="step-title" id="stepTitle5">Final Details</h2>
+            
+            <div class="step-error-banner" id="stepBannerError5" role="alert"></div>
+
+            <p class="field-helper" style="margin-bottom: 16px;">Please confirm your communication WhatsApp number and residence state.</p>
+
+            <div class="form-group" id="groupWhatsappNumber">
+              <label class="form-label" for="whatsappNumber">
+                WhatsApp Number <span class="required-star">*</span>
+              </label>
+              <div class="input-container">
+                <div class="input-prefix" aria-hidden="true">
+                  <span class="flag-icon">🇮🇳</span>
+                  <span>+91</span>
+                </div>
+                <input 
+                  type="tel" 
+                  id="whatsappNumber" 
+                  name="whatsappNumber" 
+                  class="form-input has-prefix" 
+                  placeholder="10-digit WhatsApp number" 
+                  autocomplete="tel-national"
+                  maxlength="14"
+                  inputmode="numeric"
+                  required
+                >
+              </div>
+              <p class="field-helper">Can be different from your primary mobile number</p>
+              <div class="field-error-msg" id="errorWhatsappNumber"></div>
+            </div>
+
+            <div class="form-group" id="groupState">
+              <label class="form-label" for="userState">
+                State <span class="required-star">*</span>
+              </label>
+              <select id="userState" name="userState" class="form-select" required>
+                <option value="">Select your state</option>
+                <!-- 28 Indian States -->
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                <option value="Assam">Assam</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Chhattisgarh">Chhattisgarh</option>
+                <option value="Goa">Goa</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                <option value="Jharkhand">Jharkhand</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Manipur">Manipur</option>
+                <option value="Meghalaya">Meghalaya</option>
+                <option value="Mizoram">Mizoram</option>
+                <option value="Nagaland">Nagaland</option>
+                <option value="Odisha">Odisha</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Sikkim">Sikkim</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Tripura">Tripura</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Uttarakhand">Uttarakhand</option>
+                <option value="West Bengal">West Bengal</option>
+                <!-- Union Territories -->
+                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                <option value="Chandigarh">Chandigarh</option>
+                <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                <option value="Delhi (NCT)">Delhi (NCT)</option>
+                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                <option value="Ladakh">Ladakh</option>
+                <option value="Lakshadweep">Lakshadweep</option>
+                <option value="Puducherry">Puducherry</option>
+              </select>
+              <div class="field-error-msg" id="errorState"></div>
+            </div>
+          </section>
+
+          <!-- Navigation Actions -->
+          <div class="card-actions">
+            <button type="button" class="btn btn-secondary" id="btnBack" style="display: none;">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+              <span>Back</span>
+            </button>
+
+            <button type="button" class="btn btn-primary" id="btnContinue" disabled>
+              <span>Continue</span>
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+
+            <button type="button" class="btn btn-primary" id="btnSubmit" style="display: none;">
+              <span>Submit</span>
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </button>
+          </div>
+
+        </div> <!-- /card-body -->
+
+        <!-- ==============================================================
+             REVIEW / CONFIRMATION SCREEN
+             ============================================================== -->
+        <div class="review-container" id="reviewScreen">
+          <div class="success-badge-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+
+          <h2 class="review-title">Enquiry Submitted Successfully</h2>
+          <p class="review-subtitle">
+            Thank you. Your enquiry has been submitted. Our team will review your profile and reach out shortly.
+          </p>
+
+          <div class="review-summary-card">
+            <h4>Assessment Summary</h4>
+            <div class="summary-grid">
+              <div class="summary-item">
+                <span class="summary-label">Biggest Challenge:</span>
+                <span class="summary-value" id="reviewChallenge">—</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">Full Name:</span>
+                <span class="summary-value" id="reviewFullName">—</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">Mobile Number:</span>
+                <span class="summary-value" id="reviewMobileNumber">—</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">Trading Segment:</span>
+                <span class="summary-value" id="reviewTradingSegment">—</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">Trading Capital:</span>
+                <span class="summary-value" id="reviewTradingCapital">—</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">WhatsApp Number:</span>
+                <span class="summary-value" id="reviewWhatsappNumber">—</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">State:</span>
+                <span class="summary-value" id="reviewState">—</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review WhatsApp CTA Button -->
+          <a href="#" id="btnReviewWhatsApp" class="btn btn-whatsapp-chat" target="_blank" rel="noopener noreferrer">
+            <!-- Official WhatsApp SVG icon -->
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            <span>Chat on WhatsApp</span>
+          </a>
+          <p class="review-action-note">Opens WhatsApp directly with our advisory desk</p>
+        </div> <!-- /review-container -->
+
+      </div> <!-- /assessment-card -->
+    </div> <!-- /assessment-container -->
+  </main>
+
+  <!-- Minimal Compliant Footer -->
+  <footer class="site-footer">
+    <p class="footer-copy">© 2026 Alpha Traders. All rights reserved.</p>
+    <p class="footer-disclaimer">
+      Trading in derivatives and capital markets involves substantial financial risk. The assessment is conducted solely for client qualification and strategy alignment.
+    </p>
+  </footer>
+
+  <!-- ==============================================================
+       FLOATING WHATSAPP BUTTON (With Authentic WhatsApp Icon & Pulse)
+       ============================================================== -->
+  <aside class="floating-whatsapp-wrapper" aria-label="Customer Support">
+    <div class="floating-whatsapp-tooltip" role="tooltip">Need help? Chat with us</div>
+    <a 
+      href="https://wa.me/918689921644?text=Hello%20Alpha%20Traders%2C%20I%20would%20like%20to%20know%20more%20about%20your%20trading-related%20services." 
+      id="floatingWhatsAppBtn" 
+      class="floating-whatsapp-btn" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      aria-label="Chat with Alpha Traders on WhatsApp"
+    >
+      <!-- Official WhatsApp SVG icon -->
+      <svg viewBox="0 0 24 24" width="32" height="32" fill="#FFFFFF" aria-hidden="true">
+        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+      </svg>
+    </a>
+  </aside>
+
+  <!-- Application Logic -->
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
