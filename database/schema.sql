@@ -1,5 +1,5 @@
 -- ============================================================================
--- ALPHA TRADERS — QUALIFICATION PORTAL (PHASE 2)
+-- STOCK MARKET — QUALIFICATION PORTAL (PHASE 2)
 -- Database: Neon PostgreSQL Schema
 -- Table: leads
 -- ============================================================================

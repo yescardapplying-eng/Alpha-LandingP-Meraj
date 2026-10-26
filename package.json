@@ -1,7 +1,7 @@
 {
   "name": "alpha-landing-meraj",
   "version": "1.0.0",
-  "description": "Alpha Traders Qualification Landing Page",
+  "description": "Stock Market Qualification Landing Page",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -9,7 +9,7 @@
     "test": "node test_phase2.js"
   },
   "keywords": [
-    "alpha-traders",
+    "stock-market",
     "landing-page"
   ],
   "author": "",

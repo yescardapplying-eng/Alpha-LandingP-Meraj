@@ -1,6 +1,6 @@
-# Alpha Traders — Lead Qualification Portal
+# Stock Market — Lead Qualification Portal
 
-Production-ready, mobile-first lead qualification interface for **Alpha Traders**.
+Production-ready, mobile-first lead qualification interface for **Stock Market**.
 
 ## Tech Stack
 - **Frontend**: HTML5, CSS3, Vanilla JavaScript (ES6+)
@@ -12,8 +12,8 @@ Production-ready, mobile-first lead qualification interface for **Alpha Traders*
 ```
 Alpha-LandingP-Meraj/
 ├── api/
-│   ├── track-step.js     # Progressive step saving (Steps 1-4)
-│   └── submit-lead.js    # Final lead completion & atomic update (Step 5)
+│   ├── track-step.js     # Progressive step saving (Steps 1-5)
+│   └── submit-lead.js    # Final lead completion & atomic verification (Step 5)
 ├── assets/
 │   ├── css/
 │   │   └── style.css     # Premium fintech styling & responsive design
@@ -34,16 +34,20 @@ Alpha-LandingP-Meraj/
 └── README.md
 ```
 
-## Phase 2 Features (Completed)
-- [x] Progressive step saving (Step 1 INSERT, Steps 2-4 UPDATE same record)
+## Phase 2 Features (Completed & Verified)
+- [x] Progressive step saving across all 5 steps (Step 1 INSERT, Steps 2-5 UPDATE same record)
+- [x] Permanent session integrity (completed session IDs locked against alteration)
+- [x] Full questionnaire validation before completion (rejects partial completion attempts)
 - [x] Abandoned/partial user persistence (`status = 'partial'`)
 - [x] One session = One database record (`session_id` UNIQUE constraint)
-- [x] Human-readable persistent `lead_reference` (`AT-YYYYMMDD-XXXX`)
+- [x] Human-readable persistent `lead_reference`
 - [x] Back-navigation protection (`current_step = GREATEST(...)`)
 - [x] UTM attribution persistence (`COALESCE` without overwriting)
 - [x] Server-side validation for challenges, phones, segments, capitals, and states
+- [x] Safe input handling (resilient to malformed payloads and non-string types)
 - [x] Network error handling & retry UI on frontend
 - [x] Double-click and duplicate submission protection
+- [x] Accessible Privacy Notice dialog modal
 - [x] Zero PHP and zero MySQL dependencies
 - [x] 100% Vercel & Neon PostgreSQL native
 

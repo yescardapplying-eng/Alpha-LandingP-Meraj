@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Alpha Traders — Trader Qualification</title>
-  <meta name="description" content="Alpha Traders official qualification assessment for active traders. Align your risk and execution strategy with our desk.">
+  <title>Stock Market — Trader Qualification</title>
+  <meta name="description" content="Stock Market official qualification assessment for active traders. Align your risk and execution strategy with our desk.">
   <meta name="robots" content="noindex, nofollow">
   
   <!-- Preconnect to Google Fonts -->
@@ -23,10 +23,13 @@
     <div class="header-container">
       <div class="brand">
         <div class="brand-icon" aria-hidden="true">
-          <span>α</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+            <polyline points="16 7 22 7 22 13"></polyline>
+          </svg>
         </div>
         <div class="brand-info">
-          <span class="brand-title">ALPHA TRADERS</span>
+          <span class="brand-title">STOCK MARKET</span>
           <span class="brand-tagline">Trader Assessment Desk</span>
         </div>
       </div>
@@ -92,7 +95,7 @@
           </section>
 
           <!-- ==============================================================
-               STEP 2: Contact Details (No email, no OTP, no WhatsApp here)
+               STEP 2: Contact Details (No email, no OTP)
                ============================================================== -->
           <section class="step-pane" id="stepPane2" aria-labelledby="stepTitle2">
             <h2 class="step-title" id="stepTitle2">Your Contact Details</h2>
@@ -378,15 +381,15 @@
             </div>
           </div>
 
-          <!-- Review WhatsApp CTA Button -->
-          <a href="#" id="btnReviewWhatsApp" class="btn btn-whatsapp-chat" target="_blank" rel="noopener noreferrer">
-            <!-- Official WhatsApp SVG icon -->
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-            </svg>
-            <span>Chat on WhatsApp</span>
-          </a>
-          <p class="review-action-note">Opens WhatsApp directly with our advisory desk</p>
+          <div class="review-actions" style="margin-top: 24px; text-align: center;">
+            <button type="button" class="btn btn-secondary" id="btnRestart">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="1 4 1 10 7 10"></polyline>
+                <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+              </svg>
+              <span>Start New Assessment</span>
+            </button>
+          </div>
         </div> <!-- /review-container -->
 
       </div> <!-- /assessment-card -->
@@ -395,31 +398,58 @@
 
   <!-- Minimal Compliant Footer -->
   <footer class="site-footer">
-    <p class="footer-copy">© 2026 Alpha Traders. All rights reserved.</p>
-    <p class="footer-disclaimer">
-      Trading in derivatives and capital markets involves substantial financial risk. The assessment is conducted solely for client qualification and strategy alignment.
-    </p>
+    <div class="footer-container">
+      <p class="footer-copy">Copyright © 2026 Stock Market. All rights reserved.</p>
+      <div class="footer-links">
+        <button type="button" class="footer-link-btn" id="btnPrivacyPolicy" aria-haspopup="dialog" aria-controls="privacyModal">Privacy Policy</button>
+      </div>
+    </div>
   </footer>
 
-  <!-- ==============================================================
-       FLOATING WHATSAPP BUTTON (With Authentic WhatsApp Icon & Pulse)
-       ============================================================== -->
-  <aside class="floating-whatsapp-wrapper" aria-label="Customer Support">
-    <div class="floating-whatsapp-tooltip" role="tooltip">Need help? Chat with us</div>
-    <a 
-      href="https://wa.me/918689921644?text=Hello%20Alpha%20Traders%2C%20I%20would%20like%20to%20know%20more%20about%20your%20trading-related%20services." 
-      id="floatingWhatsAppBtn" 
-      class="floating-whatsapp-btn" 
-      target="_blank" 
-      rel="noopener noreferrer"
-      aria-label="Chat with Alpha Traders on WhatsApp"
-    >
-      <!-- Official WhatsApp SVG icon -->
-      <svg viewBox="0 0 24 24" width="32" height="32" fill="#FFFFFF" aria-hidden="true">
-        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-      </svg>
-    </a>
-  </aside>
+  <!-- Accessible Privacy Notice Modal Dialog -->
+  <div class="modal-backdrop" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyModalTitle" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="privacyModalTitle">Privacy Notice &amp; Policy</h3>
+        <button type="button" class="modal-close-btn" id="btnClosePrivacyModal" aria-label="Close privacy notice">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="privacy-intro">
+          This Privacy Notice outlines how <strong>Stock Market</strong> collects, handles, and protects information submitted through this trader qualification assessment.
+        </p>
+
+        <h4>1. Information Collected</h4>
+        <ul>
+          <li><strong>Assessment Details:</strong> Self-reported trading challenge, trading segment, and capital range.</li>
+          <li><strong>Contact Information:</strong> Full name, primary mobile number, WhatsApp number, and state of residence.</li>
+          <li><strong>Technical Metadata:</strong> IP address, user-agent details, and marketing campaign attribution parameters (UTM tags).</li>
+        </ul>
+
+        <h4>2. Purpose of Collection</h4>
+        <p>
+          Information collected is used strictly to evaluate candidate suitability for trader qualification, schedule introductory consultation calls, communicate qualification updates via WhatsApp or mobile phone, and prevent automated abuse.
+        </p>
+
+        <h4>3. Data Security &amp; Retention</h4>
+        <p>
+          Submitted data is securely stored in a managed PostgreSQL environment with encrypted transit (SSL/TLS). We do not sell, rent, or trade your contact information with unrelated third-party marketing brokers.
+        </p>
+
+        <h4>4. Business Contact Details</h4>
+        <p class="privacy-placeholder">
+          <em>[Notice: Official registered business entity name, physical office address, and verified grievance officer contact details will be finalized prior to public launch. For inquiries, contact: support@stockmarket.internal]</em>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btnClosePrivacyModalBottom">Close</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Application Logic -->
   <script src="assets/js/app.js"></script>

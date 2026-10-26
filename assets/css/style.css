@@ -1,6 +1,6 @@
 /* ==========================================================================
-   ALPHA TRADERS — QUALIFICATION LANDING PAGE
-   Phase 1: Modern Financial-Tech Stylesheet
+   STOCK MARKET — QUALIFICATION LANDING PAGE
+   Modern Financial-Tech Stylesheet
    ========================================================================== */
 
 /* Google Fonts: Inter */
@@ -20,13 +20,7 @@
   --color-bright-green: #22C55E;
   --color-green-tint: #F0FDF4;
   --color-green-tint-border: #BBF7D0;
-
-  /* WhatsApp Brand Color */
-  --color-whatsapp: #25D366;
-  --color-whatsapp-hover: #20BD5A;
-  --color-whatsapp-pulse: rgba(37, 211, 102, 0.4);
-
-  /* Typography Colors */
+   /* Typography Colors */
   --color-text-main: #111827;
   --color-text-muted: #64748B;
   --color-text-light: #94A3B8;
@@ -46,7 +40,6 @@
   --shadow-card: 0 4px 20px -2px rgba(7, 26, 43, 0.06), 0 2px 6px -1px rgba(7, 26, 43, 0.04);
   --shadow-hover: 0 8px 24px -4px rgba(7, 26, 43, 0.08);
   --shadow-btn: 0 2px 4px rgba(22, 163, 74, 0.2);
-  --shadow-wa: 0 4px 16px rgba(37, 211, 102, 0.35);
 
   /* Border Radii */
   --radius-sm: 6px;
@@ -595,20 +588,6 @@ body {
   color: var(--color-primary-dark);
 }
 
-.btn-whatsapp-chat {
-  background-color: var(--color-whatsapp);
-  color: #FFFFFF;
-  width: 100%;
-  padding: 14px 20px;
-  font-size: 1rem;
-  box-shadow: var(--shadow-wa);
-}
-
-.btn-whatsapp-chat:hover {
-  background-color: var(--color-whatsapp-hover);
-  transform: translateY(-1px);
-}
-
 .btn-icon {
   width: 18px;
   height: 18px;
@@ -703,120 +682,161 @@ body {
   word-break: break-word;
 }
 
-.review-action-note {
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-  margin-top: 10px;
-}
-
 /* ==========================================================================
-   FLOATING WHATSAPP BUTTON & TOOLTIP
-   ========================================================================== */
-.floating-whatsapp-wrapper {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.floating-whatsapp-tooltip {
-  background-color: var(--color-primary-dark);
-  color: #FFFFFF;
-  font-size: 0.78125rem;
-  font-weight: 500;
-  padding: 6px 12px;
-  border-radius: var(--radius-full);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0.95;
-  transition: opacity var(--transition-fast), transform var(--transition-fast);
-}
-
-.floating-whatsapp-btn {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background-color: var(--color-whatsapp);
-  color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-wa);
-  text-decoration: none;
-  position: relative;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  transition: transform var(--transition-fast), background-color var(--transition-fast);
-  /* Pulse animation every 2 seconds */
-  animation: wa-pulse 2s infinite ease-in-out;
-}
-
-.floating-whatsapp-btn:hover {
-  background-color: var(--color-whatsapp-hover);
-  transform: scale(1.06);
-}
-
-.floating-whatsapp-btn svg {
-  width: 32px;
-  height: 32px;
-  fill: #FFFFFF;
-}
-
-/* Subtle, professional WhatsApp pulse animation */
-@keyframes wa-pulse {
-  0% {
-    box-shadow: 0 0 0 0 var(--color-whatsapp-pulse), 0 4px 16px rgba(37, 211, 102, 0.35);
-    transform: scale(1);
-  }
-  50% {
-    box-shadow: 0 0 0 8px rgba(37, 211, 102, 0), 0 4px 16px rgba(37, 211, 102, 0.35);
-    transform: scale(1.025);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0), 0 4px 16px rgba(37, 211, 102, 0.35);
-    transform: scale(1);
-  }
-}
-
-/* Respect user's motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  .floating-whatsapp-btn {
-    animation: none !important;
-  }
-}
-
-/* ==========================================================================
-   FOOTER (Minimal & Compliant)
+   FOOTER (Minimal & Professional)
    ========================================================================== */
 .site-footer {
-  padding: 16px 20px 24px;
-  text-align: center;
-  font-size: 0.75rem;
+  padding: 20px 20px;
+  font-size: 0.8125rem;
   color: var(--color-text-muted);
   border-top: 1px solid var(--color-border);
   background-color: #FFFFFF;
 }
 
-.footer-copy {
-  margin-bottom: 4px;
+.footer-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
 }
 
-.footer-disclaimer {
-  font-size: 0.6875rem;
-  color: var(--color-text-light);
+.footer-copy {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.footer-links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.footer-link-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  padding: 4px 8px;
+  font-family: inherit;
+  transition: color var(--transition-fast);
+}
+
+.footer-link-btn:hover {
+  color: var(--color-primary-green);
+}
+
+/* ==========================================================================
+   ACCESSIBLE MODAL (Privacy Policy)
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(7, 26, 43, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-dialog {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
   max-width: 580px;
-  margin: 0 auto;
-  line-height: 1.4;
+  width: 100%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 40px rgba(7, 26, 43, 0.2);
+  overflow: hidden;
+  animation: modalFadeIn 0.2s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-header {
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.modal-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  background-color: var(--color-bg);
+  color: var(--color-primary-dark);
+}
+
+.modal-body {
+  padding: 20px 24px;
+  overflow-y: auto;
+  font-size: 0.875rem;
+  color: var(--color-text-main);
+  line-height: 1.6;
+}
+
+.modal-body h4 {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  margin: 16px 0 8px;
+}
+
+.modal-body ul {
+  padding-left: 20px;
+  margin-bottom: 12px;
+}
+
+.modal-body li {
+  margin-bottom: 6px;
+}
+
+.privacy-placeholder {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background-color: var(--color-bg);
+  border-left: 3px solid var(--color-primary-green);
+  border-radius: var(--radius-sm);
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.modal-footer {
+  padding: 14px 24px;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: flex-end;
+  background-color: var(--color-bg);
 }
 
 /* ==========================================================================
@@ -858,25 +878,6 @@ body {
   .btn {
     padding: 12px 16px;
     font-size: 0.875rem;
-  }
-
-  .floating-whatsapp-wrapper {
-    bottom: 16px;
-    right: 16px;
-  }
-
-  .floating-whatsapp-tooltip {
-    display: none; /* Hide floating tooltip on small screens to save space */
-  }
-
-  .floating-whatsapp-btn {
-    width: 48px;
-    height: 48px;
-  }
-
-  .floating-whatsapp-btn svg {
-    width: 28px;
-    height: 28px;
   }
 }
 

@@ -1,19 +1,12 @@
 /**
  * ==========================================================================
- * ALPHA TRADERS — QUALIFICATION QUESTIONNAIRE (PHASE 1)
+ * STOCK MARKET — QUALIFICATION QUESTIONNAIRE
  * Centralized State Management, Progressive Hooks & Responsive Controller
  * ==========================================================================
  */
 
 (function () {
   'use strict';
-
-  // Alpha Traders WhatsApp Business Configuration
-  const WHATSAPP_CONFIG = {
-    phoneNumber: '918689921644', // International format (+91 8689921644)
-    reviewMessage: 'Hello Alpha Traders, I have submitted my trading enquiry and would like to connect with your team.',
-    floatingMessage: 'Hello Alpha Traders, I would like to know more about your trading-related services.'
-  };
 
   /**
    * Centralized Frontend State Object
@@ -65,7 +58,6 @@
     bindEvents();
     renderStep(formState.currentStep);
     updateProgress(formState.currentStep);
-    setupWhatsAppLinks();
   }
 
   /**
@@ -84,6 +76,13 @@
       btnBack: document.getElementById('btnBack'),
       btnContinue: document.getElementById('btnContinue'),
       btnSubmit: document.getElementById('btnSubmit'),
+      btnRestart: document.getElementById('btnRestart'),
+
+      // Privacy policy modal elements
+      btnPrivacyPolicy: document.getElementById('btnPrivacyPolicy'),
+      privacyModal: document.getElementById('privacyModal'),
+      btnClosePrivacyModal: document.getElementById('btnClosePrivacyModal'),
+      btnClosePrivacyModalBottom: document.getElementById('btnClosePrivacyModalBottom'),
 
       // Input elements
       inputFullName: document.getElementById('fullName'),
@@ -98,28 +97,27 @@
       reviewTradingSegment: document.getElementById('reviewTradingSegment'),
       reviewTradingCapital: document.getElementById('reviewTradingCapital'),
       reviewWhatsappNumber: document.getElementById('reviewWhatsappNumber'),
-      reviewState: document.getElementById('reviewState'),
-      btnReviewWhatsApp: document.getElementById('btnReviewWhatsApp'),
-
-      // Floating WhatsApp elements
-      floatingWhatsAppBtn: document.getElementById('floatingWhatsAppBtn')
+      reviewState: document.getElementById('reviewState')
     };
   }
 
   /**
-   * Generate or retrieve existing Session ID (AT-SESSION-XXXXXXXX)
+   * Generate or retrieve existing Session ID
    */
   function initSession() {
-    const storageKey = 'alpha_traders_session_id';
+    const storageKey = 'stock_market_session_id';
     let savedSession = null;
+    let completedSession = null;
 
     try {
-      savedSession = sessionStorage.getItem(storageKey);
+      savedSession = sessionStorage.getItem(storageKey) || sessionStorage.getItem('alpha_traders_session_id');
+      completedSession = sessionStorage.getItem('stock_market_completed_session');
     } catch (e) {
       // Handle storage exceptions if private mode disables storage
     }
 
-    if (savedSession && /^AT-SESSION-[A-Z0-9]{8}$/.test(savedSession)) {
+    // Do NOT reuse if session was already marked completed
+    if (savedSession && savedSession !== completedSession && /^(AT|SM)-SESSION-[A-Z0-9]{8}$/.test(savedSession)) {
       formState.sessionId = savedSession;
     } else {
       formState.sessionId = generateSessionId();
@@ -130,7 +128,7 @@
   }
 
   /**
-   * Generates unique session ID formatted as AT-SESSION-XXXXXXXX
+   * Generates unique session ID formatted as SM-SESSION-XXXXXXXX
    */
   function generateSessionId() {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -138,7 +136,7 @@
     for (let i = 0; i < 8; i++) {
       result += chars.charAt(Math.floor(Math.random() * chars.length));
     }
-    return `AT-SESSION-${result}`;
+    return `SM-SESSION-${result}`;
   }
 
   /**
@@ -153,12 +151,12 @@
       if (val) {
         formState[key] = val.trim();
         try {
-          sessionStorage.setItem(`alpha_${key}`, val.trim());
+          sessionStorage.setItem(`sm_${key}`, val.trim());
         } catch (e) {}
       } else {
         // Fallback to existing session storage if present
         try {
-          const cached = sessionStorage.getItem(`alpha_${key}`);
+          const cached = sessionStorage.getItem(`sm_${key}`) || sessionStorage.getItem(`alpha_${key}`);
           if (cached) formState[key] = cached;
         } catch (e) {}
       }
@@ -198,6 +196,36 @@
       dom.btnSubmit.addEventListener('click', handleSubmit);
     }
 
+    // Restart Button (Review Screen)
+    if (dom.btnRestart) {
+      dom.btnRestart.addEventListener('click', restartQuestionnaire);
+    }
+
+    // Privacy Policy Modal Events
+    if (dom.btnPrivacyPolicy) {
+      dom.btnPrivacyPolicy.addEventListener('click', openPrivacyModal);
+    }
+    if (dom.btnClosePrivacyModal) {
+      dom.btnClosePrivacyModal.addEventListener('click', closePrivacyModal);
+    }
+    if (dom.btnClosePrivacyModalBottom) {
+      dom.btnClosePrivacyModalBottom.addEventListener('click', closePrivacyModal);
+    }
+    if (dom.privacyModal) {
+      dom.privacyModal.addEventListener('click', function (e) {
+        if (e.target === dom.privacyModal) {
+          closePrivacyModal();
+        }
+      });
+    }
+
+    // Escape key closes modal
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && dom.privacyModal && dom.privacyModal.style.display === 'flex') {
+        closePrivacyModal();
+      }
+    });
+
     // Input clearing error feedback on typing
     const inputsToWatch = [
       { el: dom.inputFullName, group: 'groupFullName' },
@@ -227,35 +255,6 @@
         }
       }
     });
-  }
-
-  /**
-   * Setup click-to-chat links with proper prefilled text
-   */
-  function setupWhatsAppLinks() {
-    // Floating Button URL
-    if (dom.floatingWhatsAppBtn) {
-      const floatingUrl = buildWhatsAppUrl(WHATSAPP_CONFIG.phoneNumber, WHATSAPP_CONFIG.floatingMessage);
-      dom.floatingWhatsAppBtn.setAttribute('href', floatingUrl);
-      dom.floatingWhatsAppBtn.setAttribute('target', '_blank');
-      dom.floatingWhatsAppBtn.setAttribute('rel', 'noopener noreferrer');
-    }
-
-    // Review Screen WhatsApp Button URL
-    if (dom.btnReviewWhatsApp) {
-      const reviewUrl = buildWhatsAppUrl(WHATSAPP_CONFIG.phoneNumber, WHATSAPP_CONFIG.reviewMessage);
-      dom.btnReviewWhatsApp.setAttribute('href', reviewUrl);
-      dom.btnReviewWhatsApp.setAttribute('target', '_blank');
-      dom.btnReviewWhatsApp.setAttribute('rel', 'noopener noreferrer');
-    }
-  }
-
-  /**
-   * Helper to construct WhatsApp Click-to-Chat URL
-   */
-  function buildWhatsAppUrl(phone, message) {
-    const encodedMsg = encodeURIComponent(message);
-    return `https://wa.me/${phone}?text=${encodedMsg}`;
   }
 
   /**
@@ -553,9 +552,12 @@
     }
   }
 
+  let isSaving = false;
+  let isSubmitting = false;
+
   /**
    * ==========================================================================
-   * PROGRESSIVE BACKEND SAVING ARCHITECTURE (PHASE 2 REAL API)
+   * PROGRESSIVE BACKEND SAVING ARCHITECTURE
    * Asynchronously saves progress via Vercel Node.js Serverless API
    * ==========================================================================
    */
@@ -580,25 +582,39 @@
       payload.trading_segment = formState.tradingSegment;
     } else if (stepNumber === 4) {
       payload.trading_capital = formState.tradingCapital;
+    } else if (stepNumber === 5) {
+      payload.whatsapp_number = formState.whatsappNumber;
+      payload.state = formState.state;
     }
 
-    const response = await fetch('/api/track-step', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    });
-
-    let data;
+    let response;
     try {
-      data = await response.json();
-    } catch (parseErr) {
-      throw new Error('Unable to save progress. Unexpected server response.');
+      response = await fetch('/api/track-step', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+    } catch (netErr) {
+      throw new Error('Network error. Please check your internet connection and try again.');
+    }
+
+    let data = null;
+    const contentType = response.headers.get('content-type') || '';
+    if (contentType.includes('application/json')) {
+      try {
+        data = await response.json();
+      } catch (parseErr) {
+        data = null;
+      }
     }
 
     if (!response.ok || !data || data.success !== true) {
-      const errorMsg = (data && data.message) ? data.message : 'Unable to save your progress. Please check your connection and try again.';
+      if (response.status === 404) {
+        throw new Error('API route not found (HTTP 404). Please ensure the backend server is running.');
+      }
+      const errorMsg = (data && data.message) ? data.message : `Unable to save your progress (HTTP ${response.status}). Please try again.`;
       throw new Error(errorMsg);
     }
 
@@ -613,11 +629,14 @@
    * Handle Continue / Next Step with Backend Confirmation
    */
   async function handleContinue() {
+    if (isSaving) return;
     const current = formState.currentStep;
 
     if (!validateStep(current)) {
       return;
     }
+
+    isSaving = true;
 
     // Double-click protection & visual loading state
     if (dom.btnContinue) {
@@ -641,6 +660,7 @@
       // On failure: Stay on current step, keep data, show friendly retry error
       showStepBannerError(current, err.message || 'Unable to save your progress. Please check your connection and try again.');
     } finally {
+      isSaving = false;
       if (dom.btnContinue) {
         dom.btnContinue.disabled = false;
         const originalText = dom.btnContinue.getAttribute('data-original-text');
@@ -668,10 +688,13 @@
    */
   async function handleSubmit(e) {
     if (e) e.preventDefault();
+    if (isSubmitting) return;
 
     if (!validateStep(5)) {
       return;
     }
+
+    isSubmitting = true;
 
     // Disable button to prevent multi-clicks
     if (dom.btnSubmit) {
@@ -680,29 +703,44 @@
     }
 
     try {
+      // Step 1: Save Step 5 data to PostgreSQL before final completion
+      await saveStepProgress(5);
+
+      // Step 2: Final completion submission
       const payload = {
         session_id: formState.sessionId,
         whatsapp_number: formState.whatsappNumber,
         state: formState.state
       };
 
-      const response = await fetch('/api/submit-lead', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
-
-      let data;
+      let response;
       try {
-        data = await response.json();
-      } catch (parseErr) {
-        throw new Error('Unable to submit. Unexpected server response.');
+        response = await fetch('/api/submit-lead', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+      } catch (netErr) {
+        throw new Error('Network error. Please check your internet connection and try again.');
+      }
+
+      let data = null;
+      const contentType = response.headers.get('content-type') || '';
+      if (contentType.includes('application/json')) {
+        try {
+          data = await response.json();
+        } catch (parseErr) {
+          data = null;
+        }
       }
 
       if (!response.ok || !data || data.success !== true) {
-        const errorMsg = (data && data.message) ? data.message : 'Unable to submit your application. Please try again.';
+        if (response.status === 404) {
+          throw new Error('API route not found (HTTP 404). Please ensure the backend server is running.');
+        }
+        const errorMsg = (data && data.message) ? data.message : `Unable to submit your application (HTTP ${response.status}). Please try again.`;
         throw new Error(errorMsg);
       }
 
@@ -712,6 +750,13 @@
         formState.leadReference = data.lead_reference;
       }
 
+      // Invalidate completed session so it can NEVER be reused or modified
+      try {
+        sessionStorage.setItem('stock_market_completed_session', formState.sessionId);
+        sessionStorage.removeItem('stock_market_session_id');
+        sessionStorage.removeItem('alpha_traders_session_id');
+      } catch (e) {}
+
       // Show Review / Confirmation Screen
       showReviewScreen();
     } catch (err) {
@@ -720,6 +765,88 @@
         dom.btnSubmit.disabled = false;
         dom.btnSubmit.innerHTML = '<span>Submit</span><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>';
       }
+    } finally {
+      isSubmitting = false;
+    }
+  }
+
+  /**
+   * Reset questionnaire and start a fresh session
+   */
+  function restartQuestionnaire() {
+    // Generate brand new session ID
+    formState.sessionId = generateSessionId();
+    try {
+      sessionStorage.setItem('stock_market_session_id', formState.sessionId);
+    } catch (e) {}
+
+    // Reset state values
+    formState.currentStep = 1;
+    formState.challenge = '';
+    formState.fullName = '';
+    formState.mobileNumber = '';
+    formState.tradingSegment = '';
+    formState.tradingCapital = '';
+    formState.whatsappNumber = '';
+    formState.state = '';
+    formState.status = 'partial';
+    delete formState.leadReference;
+
+    // Reset inputs
+    if (dom.inputFullName) dom.inputFullName.value = '';
+    if (dom.inputMobileNumber) dom.inputMobileNumber.value = '';
+    if (dom.inputWhatsappNumber) dom.inputWhatsappNumber.value = '';
+    if (dom.selectState) dom.selectState.value = '';
+
+    // Unselect all option cards
+    document.querySelectorAll('.option-card').forEach(function (card) {
+      card.classList.remove('selected');
+      const radio = card.querySelector('input[type="radio"]');
+      if (radio) radio.checked = false;
+    });
+
+    // Clear all error banners & field messages
+    for (let s = 1; s <= 5; s++) {
+      clearStepBannerError(s);
+    }
+    clearFieldError('groupFullName');
+    clearFieldError('groupMobileNumber');
+    clearFieldError('groupWhatsappNumber');
+    clearFieldError('groupState');
+
+    // Reset submit button state
+    if (dom.btnSubmit) {
+      dom.btnSubmit.disabled = false;
+      dom.btnSubmit.innerHTML = '<span>Submit</span><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+    }
+
+    // Hide review screen, show card header and body
+    if (dom.reviewScreen) dom.reviewScreen.classList.remove('active');
+    if (dom.cardHeader) dom.cardHeader.style.display = 'block';
+    if (dom.cardBody) dom.cardBody.style.display = 'block';
+
+    // Render Step 1
+    renderStep(1);
+    updateProgress(1);
+    scrollToTopOfCard();
+  }
+
+  /**
+   * Modal Dialog Controllers
+   */
+  function openPrivacyModal() {
+    if (dom.privacyModal) {
+      dom.privacyModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      if (dom.btnClosePrivacyModal) dom.btnClosePrivacyModal.focus();
+    }
+  }
+
+  function closePrivacyModal() {
+    if (dom.privacyModal) {
+      dom.privacyModal.style.display = 'none';
+      document.body.style.overflow = '';
+      if (dom.btnPrivacyPolicy) dom.btnPrivacyPolicy.focus();
     }
   }
 
@@ -759,14 +886,16 @@
   }
 
   // Expose state and hook on window object for testing and Phase 2 inspection
-  window.AlphaTradersApp = {
+  window.StockMarketApp = {
     getState: function () {
       return Object.assign({}, formState);
     },
     saveStepProgress: saveStepProgress,
     renderStep: renderStep,
-    validateStep: validateStep
+    validateStep: validateStep,
+    restartQuestionnaire: restartQuestionnaire
   };
+  window.AlphaTradersApp = window.StockMarketApp; // Alias for backward compatibility
 
   // Run on DOM ready
   if (document.readyState === 'loading') {
