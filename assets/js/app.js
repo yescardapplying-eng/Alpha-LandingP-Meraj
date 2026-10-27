@@ -755,7 +755,8 @@
       // Trigger Meta Pixel 'Lead' event strictly once upon verified backend submission
       if (!formState.leadTracked && typeof window.fbq === 'function') {
         try {
-          window.fbq('track', 'Lead', {
+          const activePixel = window.__ACTIVE_META_PIXEL_ID__ || (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('sm_active_meta_pixel')) || '1847748246372672';
+          window.fbq('trackSingle', activePixel, 'Lead', {
             content_name: 'Stock Market Assessment',
             status: 'completed'
           });

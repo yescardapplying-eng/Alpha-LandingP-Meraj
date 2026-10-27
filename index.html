@@ -16,19 +16,51 @@
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css">
 
-  <!-- Meta Pixel Code -->
+  <!-- Meta Pixel Code (Multi-Account Dynamic & Isolated) -->
   <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('set', 'autoConfig', false, '1847748246372672');
-    fbq('init', '1847748246372672');
-    fbq('track', 'PageView');
+    (function() {
+      var PIXEL_PRIMARY = '1847748246372672';   // Account 1 (Default)
+      var PIXEL_SECONDARY = '1119987807079838'; // Account 2
+
+      var urlParams = new URLSearchParams(window.location.search);
+      var accParam = (urlParams.get('acc') || urlParams.get('account') || urlParams.get('fb') || '').trim();
+      var pixelParam = (urlParams.get('pixel') || urlParams.get('pixel_id') || '').trim();
+      var utmSource = (urlParams.get('utm_source') || '').toLowerCase().trim();
+
+      var activePixelId = PIXEL_PRIMARY;
+
+      if (accParam === '2' || pixelParam === PIXEL_SECONDARY || pixelParam === '2' || utmSource === 'fb2' || utmSource === 'meta2') {
+        activePixelId = PIXEL_SECONDARY;
+      } else if (accParam === '1' || pixelParam === PIXEL_PRIMARY || pixelParam === '1') {
+        activePixelId = PIXEL_PRIMARY;
+      } else {
+        try {
+          var cached = sessionStorage.getItem('sm_active_meta_pixel');
+          if (cached === PIXEL_SECONDARY || cached === PIXEL_PRIMARY) {
+            activePixelId = cached;
+          }
+        } catch (e) {}
+      }
+
+      try {
+        sessionStorage.setItem('sm_active_meta_pixel', activePixelId);
+      } catch (e) {}
+
+      window.__ACTIVE_META_PIXEL_ID__ = activePixelId;
+
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+
+      fbq('set', 'autoConfig', false, activePixelId);
+      fbq('init', activePixelId);
+      fbq('track', 'PageView');
+    })();
   </script>
   <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1847748246372672&ev=PageView&noscript=1"
